@@ -5,10 +5,9 @@ const options = {
     useUnifiedTopology: true
   }
 
-mongoose.connect(uri, options)
-.then(()=>{
- console.log('the connection was successful') 
-})
-.catch((err)=>{
- console.log('there was an error ',err);
-})
+  try{
+    mongoose.connect(uri, options)
+  }catch(error){
+    handleError(error);
+  }
+

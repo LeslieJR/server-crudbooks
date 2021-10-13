@@ -4,10 +4,11 @@ const options = {
     useNewUrlParser: true, 
     useUnifiedTopology: true
   }
-
-  try{
-    mongoose.connect(uri, options)
-  }catch(error){
-    handleError(error);
-  }
-
+  
+mongoose.connect(uri,options)
+.then(()=>{
+ console.log('the connection was successful') 
+})
+.catch((err)=>{
+ console.log('there was an error ',err);
+})

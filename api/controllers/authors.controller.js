@@ -12,8 +12,8 @@ const postAuthor = async (req, res)=>{
         })
         await newAuthor.save(); 
         return res.status(201).json(newAuthor)
-    }catch(_){
-        return res.status(409).json({error: 'Error while creating the author'})
+    }catch(err){
+        return res.status(409).json({error: err.message})
     }
 }
 

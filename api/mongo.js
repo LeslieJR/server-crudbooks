@@ -1,14 +1,16 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const uri = process.env.MONGODB_URI;
-const options = {
-    useNewUrlParser: true, 
-    useUnifiedTopology: true
-  }
-  
-mongoose.connect(uri,options)
-.then(()=>{
- console.log('the connection was successful') 
-})
-.catch((err)=>{
- console.log('there was an error ',err);
-})
+
+async () => {
+  await mongoose
+    .connect(uri)
+    .then((x) => {
+      console.log(
+        `Connected to Mongo! Database name: "${x.connections[0].name}"`
+      );
+    })
+    .catch((err) => {
+      console.error("Error connecting to mongo", err);
+    });
+  return mongoose;
+};

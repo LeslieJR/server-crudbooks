@@ -3,7 +3,8 @@ const models = require('../models')
 const postAuthor = async (req, res)=>{
     try{
         const {first_name, last_name} = req.body;
-        if(!first_name || !last_name){
+        res.json({first_name, last_name})
+        /* if(!first_name || !last_name){
             return res.status(409).json({error:'First name or Last name missing '})
         }
         const newAuthor = new models.author({
@@ -11,7 +12,7 @@ const postAuthor = async (req, res)=>{
             last_name
         })
         await newAuthor.save(); 
-        return res.status(201).json(newAuthor)
+        return res.status(201).json(newAuthor) */
     }catch(err){
         return res.status(409).json({error: err.message})
     }
